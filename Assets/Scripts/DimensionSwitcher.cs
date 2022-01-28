@@ -14,6 +14,7 @@ public class DimensionSwitcher : MonoBehaviour
     private void Start()
     {
         m_material = new Material(m_shader);
+        OnDimensionSwitched?.Invoke(m_inCreepyDimension);
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
