@@ -4,14 +4,9 @@ public class DimensionalObject : MonoBehaviour
 {
     [SerializeField] private bool m_inCreepyDimension = false;
 
-    private void OnEnable()
+    private void Awake()
     {
         DimensionSwitcher.OnDimensionSwitched += OnDimensionSwitched;
-    }
-
-    private void OnDisable()
-    {
-        DimensionSwitcher.OnDimensionSwitched -= OnDimensionSwitched;
     }
 
     private void OnDimensionSwitched(bool inCreepyDimension)
