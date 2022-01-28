@@ -1,1 +1,1 @@
-# DuralityJam
+# DualityJam
