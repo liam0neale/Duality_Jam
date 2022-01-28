@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Counter : MonoBehaviour
 { 
-    const uint m_TIME_LIMIT = 10;
-    const float m_WAIT_TIME = 0.1f;
+    const uint m_TIME_LIMIT = 10; // seconds
+    const float m_WAIT_TIME = 0.1f; // seconds
     float m_currentTime = 0.0f;
     bool isCounting = false;
-    
-    IEnumerator CountDown()
+
+    IEnumerator CountDown(float _wait)
     {
         while (m_currentTime < m_TIME_LIMIT)
         {
-            m_currentTime += UnityEngine.Time.deltaTime;
-            yield return new WaitForSeconds(m_WAIT_TIME);
+            m_currentTime += 10 * UnityEngine.Time.deltaTime;
+            yield return new WaitForSeconds(_wait);
         }
     }
 
@@ -45,14 +45,14 @@ public class Counter : MonoBehaviour
     public void Resume()
     {
         isCounting = true;
-        StartCoroutine("CountDown");
+        StartCoroutine(CountDown(m_WAIT_TIME));
     }
 
     /* haults timer 
      */
     public void Pause()
     {
-        StopCoroutine("CountDown");
+        StopCoroutine(CountDown(m_WAIT_TIME));
         isCounting = false;
 	}
 
