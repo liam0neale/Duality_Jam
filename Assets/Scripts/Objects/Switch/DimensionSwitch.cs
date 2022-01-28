@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class DimensionSwitch : Switch
 {
     public void SwitchDimension()
@@ -11,12 +7,12 @@ public class DimensionSwitch : Switch
 
     protected override void SwitchedOn()
     {
-        // Going to dark dimension
+        DimensionSwitcher.SwitchDimension(true);
     }
 
     protected override void SwitchedOff()
     {
-        // Going to normal dimension
+        DimensionSwitcher.SwitchDimension(false);
     }
 
 }
