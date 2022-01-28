@@ -47,7 +47,7 @@ public class Bomb : MonoBehaviour
 
         foreach (RaycastHit hit in hits)
         {
-            if (hit.collider.gameObject.GetComponent<DestructableObjects>())
+            if (hit.collider.gameObject.GetComponent<DestructableObjects>() != null)
             {
                 hit.collider.gameObject.GetComponent<DestructableObjects>().DestroyObject();
             }
