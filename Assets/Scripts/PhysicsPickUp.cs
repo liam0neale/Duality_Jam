@@ -6,6 +6,7 @@ public class PhysicsPickUp : MonoBehaviour
     public GameObject CarriedObject => CurrentObject == null ? null : CurrentObject.gameObject;
 
     [SerializeField] private LayerMask PickupMask;
+    [SerializeField] private LayerMask SwitchMask;
     [SerializeField] private Camera PlayerCamera;
     [SerializeField] private Transform PickupTarget;
     [Space]
@@ -37,6 +38,11 @@ public class PhysicsPickUp : MonoBehaviour
                 Debug.Log("Hit something");
                 CurrentObject = HitInfo.rigidbody;
                 CurrentObject.useGravity = false;
+            }
+
+            if(Physics.Raycast(ray, out HitInfo, PickupRange, SwitchMask))
+            {
+                Debug.Log("Hit switch");
             }
 
             else
