@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Manager : MonoBehaviour
 {
     public static HUD m_hud;
@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     Camera m_camera;
     float m_minFOV = 0;
     float m_maxFOV = 90;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -30,11 +31,9 @@ public class Manager : MonoBehaviour
         {
             float distance = m_counter.GetDistanceThrough();
             float fov = (1 - distance) * (m_maxFOV - m_minFOV);
-            m_camera.fieldOfView = fov;
+            //m_camera.fieldOfView = fov;
 
-            Debug.Log("FOV : " + fov.ToString() + "        Distance : " + distance.ToString());
+            StartCoroutine(m_hud.FlashImage(0.1f));
         }
     }
-
-  
 }
