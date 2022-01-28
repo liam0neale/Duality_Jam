@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PhysicsPickUp : MonoBehaviour
 {
+    public GameObject CarriedObject => CurrentObject == null ? null : CurrentObject.gameObject;
 
     [SerializeField] private LayerMask PickupMask;
     [SerializeField] private Camera PlayerCamera;

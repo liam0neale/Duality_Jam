@@ -4,13 +4,25 @@ public class DimensionalObject : MonoBehaviour
 {
     [SerializeField] private bool m_inCreepyDimension = false;
 
+    private PhysicsPickUp m_playerPickup = default;
+
     private void Awake()
     {
         DimensionSwitcher.OnDimensionSwitched += OnDimensionSwitched;
+
+        m_playerPickup = FindObjectOfType<PhysicsPickUp>();
     }
 
     private void OnDimensionSwitched(bool inCreepyDimension)
     {
-        gameObject.SetActive(m_inCreepyDimension == inCreepyDimension);
+        if (m_playerPickup != null && m_playerPickup.CarriedObject != null)
+        {
+            if (m_playerPickup.CarriedObject == gameObject)
+            {
+                m_inCreepyDimension = inCreepyDimension;
+            }
+            
+            gameObject.SetActive(m_inCreepyDimension == inCreepyDimension);
+        }
     }
 }
