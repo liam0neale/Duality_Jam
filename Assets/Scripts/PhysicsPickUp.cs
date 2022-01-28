@@ -25,6 +25,11 @@ public class PhysicsPickUp : MonoBehaviour
         {
             if (CurrentObject)
             {
+                if (CarriedObject.GetComponent<Bomb>() != null)
+                {
+                    CarriedObject.GetComponent<Bomb>().PlayerLetBombGo();
+                }
+
                 CurrentObject.useGravity = true;
                 CurrentObject = null;
                 return;
