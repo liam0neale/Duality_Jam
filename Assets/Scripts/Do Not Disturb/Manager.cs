@@ -19,6 +19,7 @@ public class Manager : MonoBehaviour
         m_counter = gameObject.AddComponent<Counter>();
 
         m_camera = Camera.main;
+        m_camera.fieldOfView = m_maxFOV;
 
     }
 
