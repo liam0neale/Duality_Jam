@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PhysicsPickUp : MonoBehaviour
 {
+    public GameObject CarriedObject => CurrentObject == null ? null : CurrentObject.gameObject;
 
     [SerializeField] private LayerMask PickupMask;
     [SerializeField] private Camera PlayerCamera;
@@ -29,13 +30,16 @@ public class PhysicsPickUp : MonoBehaviour
             }
 
 
-            if (Physics.Raycast(transform.position, transform.TransformDirection (Vector3.forward), out RaycastHit HitInfo, 20f))
+            Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
+
+            if (Physics.Raycast(ray, out RaycastHit HitInfo, PickupRange, PickupMask))
             {
                 Debug.Log("Hit something");
                 CurrentObject = HitInfo.rigidbody;
                 CurrentObject.useGravity = false;
             }
-            else 
+
+            else
             {
                 Debug.Log("Hit nothing");
             }
