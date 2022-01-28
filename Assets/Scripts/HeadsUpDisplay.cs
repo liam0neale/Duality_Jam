@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour
+public class HeadsUpDisplay : MonoBehaviour
 {
     private List<GameObject> hearts;
     [SerializeField] private GameObject healthContainer;
