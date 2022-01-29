@@ -27,7 +27,7 @@ public class DoorPresurePlate : PressurePlate
 
     private void OpenCloseDoor(bool open)
     {
-        if (doorObject != null && doorObject.GetComponent<DimensionalObject>().InCreepyDimension() == DimensionSwitcher.InCreepyDimension)
+        if (doorObject != null && (doorObject.GetComponent<DimensionalObject>() == null || (doorObject.GetComponent<DimensionalObject>().InCreepyDimension() == DimensionSwitcher.InCreepyDimension)))
         {
             if (open)
             {

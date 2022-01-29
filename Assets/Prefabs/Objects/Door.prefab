@@ -109,5 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894100586efafba49837457197deb513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastDoor: 1
   doorKey: 0
   doorOpenningParticleEffect: {fileID: 4717319949934167847, guid: 933dbe0352b533e489eaab7c8bca1e9e, type: 3}
+  doorClosingParticleEffect: {fileID: 3896906339930709982, guid: 4bb563cf767ebc34b8ca72d96fa70571, type: 3}
+  firstCall: 1
