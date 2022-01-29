@@ -47,7 +47,10 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!objectsOnPlate.Contains(other.gameObject)) objectsOnPlate.Add(other.gameObject);
+        if (other.gameObject.transform.parent == null || other.gameObject.transform.parent.parent == null || (other.gameObject.transform.parent.parent.tag != "Player"))
+        {
+            if (!objectsOnPlate.Contains(other.gameObject)) objectsOnPlate.Add(other.gameObject);
+        }
         SetState();
     }
 
@@ -74,6 +77,12 @@ public class PressurePlate : MonoBehaviour
 
     private void OnEnable()
     {
+        SetState();
+    }
+
+    public void CheckPlate(GameObject obj)
+    {
+        if (objectsOnPlate.Contains(obj)) objectsOnPlate.Remove(obj);
         SetState();
     }
 }

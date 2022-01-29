@@ -43,7 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b553876ce3b956145a6b8f1ca40a49ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_levelLoadDelay: 1
   m_levelPrefabs:
-  - {fileID: 5931500078451523445, guid: e0c2fa8a9caee20478adddd6a6e63e41, type: 3}
+  - {fileID: 5931500078451523445, guid: b9e45451921e48a45ba1e9b310660b10, type: 3}
   - {fileID: 5931500078451523445, guid: 9526fdf64d3828d4c9f255bb03460319, type: 3}
   - {fileID: 5931500078451523445, guid: a9a800e5ccf66a44e9f6a45ac6cf2b6b, type: 3}
+  - {fileID: 5931500078451523445, guid: bff10b373b8241f4b99f69b23f6c50c1, type: 3}
+  - {fileID: 5931500078451523445, guid: f50d5275fbb1296459e7e16c270ac576, type: 3}
+  - {fileID: 5931500078451523445, guid: e0c2fa8a9caee20478adddd6a6e63e41, type: 3}
+  - {fileID: 8746025767278977415, guid: a70887fb8187089408558108cdd53b49, type: 3}
+  - {fileID: 5931500078451523445, guid: d34c1c0278c2fe54ab415bc99d6f1913, type: 3}

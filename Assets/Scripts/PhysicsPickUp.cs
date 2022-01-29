@@ -51,6 +51,13 @@ public class PhysicsPickUp : MonoBehaviour
                     Debug.Log("Pickup");
                     CarriedObject.tag = "Respawn";
                     skipDrop = true;
+
+                    GameObject[] objs = GameObject.FindGameObjectsWithTag("PressurePlates");
+
+                    foreach (var plate in objs)
+                    {
+                        plate.GetComponent<PressurePlate>().CheckPlate(CarriedObject);
+                    }
                 }
             }
 
