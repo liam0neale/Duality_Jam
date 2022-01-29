@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Counter : MonoBehaviour
 { 
-    const uint m_TIME_LIMIT = 10; // seconds
+    float m_TIME_LIMIT = 1.0f; // seconds
     const float m_WAIT_TIME = 0.1f; // seconds
     float m_currentTime = 0.0f;
     bool isCounting = false;
@@ -26,10 +26,11 @@ public class Counter : MonoBehaviour
         return distance;
 	}
 
+    public void SetTimeLimit(float _time){ m_TIME_LIMIT = _time; }
     public bool IsTimeOver()
     {
-        if(m_currentTime >= m_TIME_LIMIT)
-            return true
+        if (m_currentTime >= m_TIME_LIMIT)
+            return true;
         return false;
 	}
     public bool IsCounting()

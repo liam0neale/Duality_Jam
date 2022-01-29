@@ -66,14 +66,16 @@ public class Manager : MonoBehaviour
             case SceneState.ssLEVEL_X:
             {
                 CalculateCameraFOV();
-                if (m_counter.IsTimeOver())
+                if (m_counter.IsTimeOver() && m_counter.IsCounting())
+                {
+                    DimensionSwitcher.SwitchDimension(false);
                     m_levelManager.ResetLevel();
-                    
+                }
             }
             break;
             default:
             {
-                    Debug.LogWarning("Manager::Update() -> not SceneState catchs for state = " + m_sceneState.ToString());
+                Debug.LogWarning("Manager::Update() -> not SceneState catchs for state = " + m_sceneState.ToString());
 			}break;
 		}
       
