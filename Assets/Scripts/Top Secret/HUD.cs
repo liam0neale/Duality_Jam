@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     public static FlashImage ImageToFlash;
-
+    IEnumerator thread = null;
     void Awake()
     {
         if(ImageToFlash == null)
@@ -15,9 +15,5 @@ public class HUD : MonoBehaviour
 
 	private void Update()
 	{
-		if(Manager.m_counter.IsCounting() )
-        {
-            StartCoroutine(ImageToFlash.Flash(0.1f));
-		}
 	}
 }

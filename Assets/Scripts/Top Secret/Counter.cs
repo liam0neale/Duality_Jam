@@ -58,7 +58,7 @@ public class Counter : MonoBehaviour
 
     /* timer is rest to zero
      */
-    public void Reset()
+    public void ResetTimer()
     {
         m_currentTime = 0.0f;
     }
@@ -67,7 +67,7 @@ public class Counter : MonoBehaviour
     public void Stop()
     {
         Pause();
-        Reset();
+        ResetTimer();
     }
 
 }
