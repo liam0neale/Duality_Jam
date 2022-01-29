@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     public static FlashImage ImageToFlash;
-    IEnumerator thread = null;
+    
     void Awake()
     {
         if(ImageToFlash == null)
