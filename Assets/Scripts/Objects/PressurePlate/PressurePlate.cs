@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    [SerializeField] PlateMovement plate;
+    [SerializeField] protected PlateMovement plate;
+    private int nbObjectsOnPlate = 0;
+
+    private List<GameObject> objectsOnPlate = new List<GameObject>();
 
     public bool IsDown
     {
@@ -12,7 +15,7 @@ public class PressurePlate : MonoBehaviour
         {
             return isDown;
         }
-        set
+        private set
         {
             if (value != isDown)
             {
@@ -44,17 +47,33 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            IsDown = true;
-        }
+        if (!objectsOnPlate.Contains(other.gameObject)) objectsOnPlate.Add(other.gameObject);
+        SetState();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            IsDown = false;
-        }
+        DeleteObjectOnPlate(other.gameObject);
+    }
+
+    public void DeleteObjectOnPlate(GameObject obj)
+    {
+        if (objectsOnPlate.Contains(obj)) objectsOnPlate.Remove(obj);
+        SetState();
+    }
+
+    private void SetState()
+    {
+        IsDown = (objectsOnPlate.Count > 0);
+    }
+
+    private void OnDisable()
+    {
+        objectsOnPlate.Clear();
+    }
+
+    private void OnEnable()
+    {
+        SetState();
     }
 }

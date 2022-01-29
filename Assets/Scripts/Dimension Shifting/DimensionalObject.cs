@@ -26,7 +26,18 @@ public class DimensionalObject : MonoBehaviour
         {
             m_inCreepyDimension = inCreepyDimension;
         }
-       
+
+        if (gameObject.GetComponent<Door>() != null && !gameObject.GetComponent<Door>().DoorState)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         gameObject.SetActive(m_inCreepyDimension == inCreepyDimension);
+    }
+
+    public bool InCreepyDimension()
+    {
+        return m_inCreepyDimension;
     }
 }

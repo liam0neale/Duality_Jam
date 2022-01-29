@@ -195,4 +195,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   m_pickupTarget: {fileID: 5015691167229546611}
-  m_pickupRange: 2
+  m_pickupRange: 1

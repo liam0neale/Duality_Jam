@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    [SerializeField] private bool lastDoor = true;
     [SerializeField] private int doorKey;
     [SerializeField] private GameObject doorOpenningParticleEffect;
+    [SerializeField] private GameObject doorClosingParticleEffect;
+    [SerializeField] private bool firstCall = true;
+
+    public bool DoorState
+    {
+        get
+        {
+            return doorState;
+        }
+        private set
+        {
+            doorState = value;
+        }
+    }
+    private bool doorState = false;
 
     public bool TryOpenDoor(int key)
     {
@@ -22,15 +38,14 @@ public class Door : MonoBehaviour
         // Openning Door Audio (TODO)
 
         // Particle System
-        GameObject smokePuff = Instantiate(doorOpenningParticleEffect, transform.position, transform.rotation) as GameObject;
-        ParticleSystem parts = smokePuff.GetComponent<ParticleSystem>();
-        float totalDuration = parts.main.duration + parts.main.startLifetime.constant;
-        Destroy(smokePuff, totalDuration);
+        OpenningAndClosingDoorParticleEffect();
 
-        // Destroy Door
-        Destroy(gameObject);
+        // Set Door to inactive
+        doorState = false;
+        if (lastDoor) FindObjectOfType<LevelManager>().HandleLevelComplete();
 
-        FindObjectOfType<LevelManager>().HandleLevelComplete();
+        this.gameObject.SetActive(false);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,5 +58,26 @@ public class Door : MonoBehaviour
                 key.DestroyKey();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        if (firstCall)
+        {
+            doorState = true;
+            firstCall = false;
+            return;
+        }
+        doorState = true;
+        OpenningAndClosingDoorParticleEffect(false);
+    }
+
+    private void OpenningAndClosingDoorParticleEffect(bool openning = true)
+    {
+        // Particle System
+        GameObject smokePuff = Instantiate((openning ? doorOpenningParticleEffect : doorClosingParticleEffect), transform.position, transform.rotation) as GameObject;
+        ParticleSystem parts = smokePuff.GetComponent<ParticleSystem>();
+        float totalDuration = parts.main.duration + parts.main.startLifetime.constant;
+        Destroy(smokePuff, totalDuration);
     }
 }
