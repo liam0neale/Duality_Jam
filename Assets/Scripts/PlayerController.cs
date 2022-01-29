@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController cc;
 
-    private void Start()
+    private void Awake()
     {
         cc = GetComponent<CharacterController>();
     }
