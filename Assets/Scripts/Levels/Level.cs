@@ -20,6 +20,7 @@ public class Level : MonoBehaviour
             Manager.m_counter.SetTimeLimit(m_darkTimer);
             Manager.m_camController.SetCameraLookAtPLayer(m_cameraRotates);
             Manager.m_camController.SetCameraMoveable(m_cameraMoves);
+            FindObjectOfType<PlayerController>().m_surfaceType = Surface.SurfaceTypes.stNORMAL;
         }
     }
 

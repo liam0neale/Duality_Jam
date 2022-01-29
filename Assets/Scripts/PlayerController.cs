@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController cc;
     Rigidbody rig;
-    Surface.SurfaceTypes m_surfaceType = Surface.SurfaceTypes.stNORMAL;
+    public Surface.SurfaceTypes m_surfaceType = Surface.SurfaceTypes.stNORMAL;
     GameObject m_collidedWith;
     private void Awake()
     {
@@ -29,9 +29,10 @@ public class PlayerController : MonoBehaviour
         
         velocity = new Vector3(h_input, 0, v_input) * movementSpeed;
 
-        switch(m_surfaceType)
+        switch (m_surfaceType)
         {
             case Surface.SurfaceTypes.stSLIPPERY:
+            case Surface.SurfaceTypes.stSTICKY:
             {
                 velocity.y -= gravity;
 
@@ -49,13 +50,5 @@ public class PlayerController : MonoBehaviour
 		}
     }
 
-	/*private void OnCollisionEnter(Collision collision)
-	{
-        if (m_collidedWith == collision.gameObject || collision.gameObject == gameObject)
-            return;
-		if(collision.gameObject.GetComponent<Surface>())
-        {
-            m_surfaceType = collision.gameObject.GetComponent<Surface>().m_surfaceTypes;
-        }
-	}*/
+	
 }
