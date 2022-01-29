@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
         if (m_player == null)
             Debug.LogError("CameraController::Awake() -> cant find player");
 
-        m_config = new CameraConfig(true, false);
+        m_config = new CameraConfig(false, false);
         cam = gameObject.GetComponent<Camera>();
     }
 
@@ -36,4 +36,13 @@ public class CameraController : MonoBehaviour
         if(m_config.lookAtPlayer)
             gameObject.transform.LookAt(m_player.transform, Vector3.up);
     }
+
+    public void SetCameraLookAtPLayer(bool _canRotate)
+    {
+        m_config.lookAtPlayer = _canRotate;
+    }
+    public void SetCameraMoveable(bool _canMove)
+    {
+        m_config.moveable = _canMove;
+	}
 }
