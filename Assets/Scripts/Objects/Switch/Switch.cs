@@ -19,15 +19,15 @@ public class Switch : MonoBehaviour
                 if (value)
                 {
                     SwitchedOn();
-                    UpdateModel();
                 }
                 else
                 {
                     SwitchedOff();
-                    UpdateModel();
                 }
             }
+
             switchState = value;
+            UpdateModel();
         }
     }
 
@@ -48,12 +48,12 @@ public class Switch : MonoBehaviour
 
     }
 
-    private void Awake()
+    private void Start()
     {
         UpdateModel();
     }
 
-    private void UpdateModel()
+    protected void UpdateModel()
     {
         m_leverMoveTransform.localRotation = Quaternion.Euler(m_leverMoveTransform.localRotation.x, m_leverMoveTransform.localRotation.y, SwitchState ? -60 : 60);
     }

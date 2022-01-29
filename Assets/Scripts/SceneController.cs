@@ -52,7 +52,7 @@ public class SceneController
 
     static bool IndexInRange()
     {
-        if (CurrentSceneIndex >= SceneManager.sceneCount)
+        if (CurrentSceneIndex >= SceneManager.sceneCount + 1)
         {
             Debug.LogError("SceneController::IndexInRange() -> index is out of range : index = " + CurrentSceneIndex.ToString());
             return false;

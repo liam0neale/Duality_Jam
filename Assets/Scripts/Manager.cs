@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Manager : MonoBehaviour
 {
+    public static Manager self;
     public static HUD m_hud;
     public static Counter m_counter;
-    public static Manager self;
+    public static LevelManager m_levelManager;
 
     //Camera Data
     Camera m_camera;
@@ -34,7 +35,7 @@ public class Manager : MonoBehaviour
 
         m_hud = gameObject.AddComponent<HUD>();
         m_counter = gameObject.AddComponent<Counter>();
-
+        m_levelManager = FindObjectOfType<LevelManager>();
         m_camera = Camera.main;
         m_camera.fieldOfView = m_maxFOV;
 
@@ -65,11 +66,16 @@ public class Manager : MonoBehaviour
             case SceneState.ssLEVEL_X:
             {
                 CalculateCameraFOV();
+                if (m_counter.IsTimeOver() && m_counter.IsCounting())
+                {
+                    DimensionSwitcher.SwitchDimension(false);
+                    m_levelManager.ResetLevel();
+                }
             }
             break;
             default:
             {
-                    Debug.LogWarning("Manager::Update() -> not SceneState catchs for state = " + m_sceneState.ToString());
+                Debug.LogWarning("Manager::Update() -> not SceneState catchs for state = " + m_sceneState.ToString());
 			}break;
 		}
       
@@ -86,8 +92,7 @@ public class Manager : MonoBehaviour
         else
         {
             m_counter.Stop();
-            HUD.ImageToFlash.StopFlash();
-           
+            HUD.ImageToFlash.StopFlash();  
         }
     }
 
