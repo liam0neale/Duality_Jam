@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
+    [SerializeField] private Transform m_leverMoveTransform = default;
+
     public bool SwitchState
     {
         get
@@ -14,12 +16,21 @@ public class Switch : MonoBehaviour
         {
             if (value != switchState)
             {
-                if (value) SwitchedOn();
-                if (!value) SwitchedOff();
+                if (value)
+                {
+                    SwitchedOn();
+                    UpdateModel();
+                }
+                else
+                {
+                    SwitchedOff();
+                    UpdateModel();
+                }
             }
             switchState = value;
         }
     }
+
     bool switchState = false;
 
     public void FlipState()
@@ -35,5 +46,15 @@ public class Switch : MonoBehaviour
     protected virtual void SwitchedOff()
     {
 
+    }
+
+    private void Awake()
+    {
+        UpdateModel();
+    }
+
+    private void UpdateModel()
+    {
+        m_leverMoveTransform.localRotation = Quaternion.Euler(m_leverMoveTransform.localRotation.x, m_leverMoveTransform.localRotation.y, SwitchState ? -60 : 60);
     }
 }
