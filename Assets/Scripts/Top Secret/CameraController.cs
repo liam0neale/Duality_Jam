@@ -8,10 +8,13 @@ public class CameraController : MonoBehaviour
     {
         public bool lookAtPlayer;
         public bool moveable;
-        public CameraConfig(bool _lookAtPlayer, bool _move)
+        public Vector3 offset;
+
+        public CameraConfig(bool _lookAtPlayer, bool _move, Vector3 _offset)
         {
             lookAtPlayer = _lookAtPlayer;
             moveable = _move;
+            offset = _offset;
 		}
 
 	}
@@ -19,6 +22,7 @@ public class CameraController : MonoBehaviour
     CameraConfig m_config;
     GameObject m_player;
     Camera cam;
+    Vector3 m_startPos;
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,8 +30,9 @@ public class CameraController : MonoBehaviour
         if (m_player == null)
             Debug.LogError("CameraController::Awake() -> cant find player");
 
-        m_config = new CameraConfig(true, false);
+        m_config = new CameraConfig(false, false, Vector3.zero);
         cam = gameObject.GetComponent<Camera>();
+        m_startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -35,5 +40,18 @@ public class CameraController : MonoBehaviour
     {
         if(m_config.lookAtPlayer)
             gameObject.transform.LookAt(m_player.transform, Vector3.up);
+        if(m_config.moveable)
+        {
+            gameObject.transform.position = m_startPos + m_player.transform.position;
+		}
     }
+
+    public void SetCameraLookAtPLayer(bool _canRotate)
+    {
+        m_config.lookAtPlayer = _canRotate;
+    }
+    public void SetCameraMoveable(bool _canMove)
+    {
+        m_config.moveable = _canMove;
+	}
 }

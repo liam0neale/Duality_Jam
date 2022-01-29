@@ -6,7 +6,8 @@ public class Level : MonoBehaviour
 
     private CharacterController m_playerController;
     [SerializeField] private float m_darkTimer;//timer to complete dark side in
-
+    [SerializeField] private bool m_cameraRotates;//does the camera look at the player
+    [SerializeField] private bool m_cameraMoves;//does the camera follow player
     public void ResetLevel()
     {
         m_playerController.enabled = false;
@@ -17,6 +18,8 @@ public class Level : MonoBehaviour
         if (Manager.m_counter != null && m_darkTimer != 0)
         {
             Manager.m_counter.SetTimeLimit(m_darkTimer);
+            Manager.m_camController.SetCameraLookAtPLayer(m_cameraRotates);
+            Manager.m_camController.SetCameraMoveable(m_cameraMoves);
         }
     }
 

@@ -8,6 +8,7 @@ public class Manager : MonoBehaviour
     public static HUD m_hud;
     public static Counter m_counter;
     public static LevelManager m_levelManager;
+    public static CameraController m_camController;
 
     //Camera Data
     Camera m_camera;
@@ -38,7 +39,7 @@ public class Manager : MonoBehaviour
         m_levelManager = FindObjectOfType<LevelManager>();
         m_camera = Camera.main;
         m_camera.fieldOfView = m_maxFOV;
-
+        m_camController = FindObjectOfType<CameraController>();
         
     }
 

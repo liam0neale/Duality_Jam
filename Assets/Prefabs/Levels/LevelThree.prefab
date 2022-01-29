@@ -363,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerStartingPosition: {fileID: 5931500079806701055}
   m_darkTimer: 10
+  m_cameraRotates: 1
 --- !u!1 &5931500079806701040
 GameObject:
   m_ObjectHideFlags: 0
