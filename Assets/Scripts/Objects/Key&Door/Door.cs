@@ -28,7 +28,9 @@ public class Door : MonoBehaviour
         Destroy(smokePuff, totalDuration);
 
         // Destroy Door
-        Destroy(this.gameObject);
+        Destroy(gameObject);
+
+        FindObjectOfType<LevelManager>().HandleLevelComplete();
     }
 
     private void OnCollisionEnter(Collision collision)

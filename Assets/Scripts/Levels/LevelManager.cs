@@ -35,6 +35,12 @@ public class LevelManager : MonoBehaviour
     {
         m_currentLevelIndex++;
 
+        if (m_currentLevelIndex >= m_levelPrefabs.Length)
+        {
+            // TODO: Load Main Menu 
+            return;
+        }
+
         if (m_currentLevelInstance != null)
         {
             Destroy(m_currentLevelInstance.gameObject);

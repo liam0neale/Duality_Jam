@@ -38,19 +38,17 @@ public class PhysicsPickUp : MonoBehaviour
 
             Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
 
-            if (Physics.Raycast(ray, out RaycastHit HitInfo, PickupRange, PickupMask))
+            if (Physics.Raycast(ray, out RaycastHit HitInfo, PickupRange, SwitchMask))
+            {
+                Debug.Log("Hit switch");
+                HitInfo.collider.gameObject.GetComponent<Switch>().FlipState();
+            }
+            else if (Physics.Raycast(ray, out HitInfo, PickupRange, PickupMask))
             {
                 Debug.Log("Hit something");
                 CurrentObject = HitInfo.rigidbody;
                 CurrentObject.useGravity = false;
             }
-
-            if(Physics.Raycast(ray, out HitInfo, PickupRange, SwitchMask))
-            {
-                Debug.Log("Hit switch");
-                HitInfo.collider.gameObject.GetComponent<Switch>().FlipState();
-            }
-
             else
             {
                 Debug.Log("Hit nothing");
