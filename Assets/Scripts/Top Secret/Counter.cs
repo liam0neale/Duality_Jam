@@ -26,6 +26,12 @@ public class Counter : MonoBehaviour
         return distance;
 	}
 
+    public bool IsTimeOver()
+    {
+        if(m_currentTime >= m_TIME_LIMIT)
+            return true
+        return false;
+	}
     public bool IsCounting()
     {
         return isCounting;
