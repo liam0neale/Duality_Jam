@@ -31,8 +31,8 @@ public class DimensionSwitcher : MonoBehaviour
 
     public static void SwitchDimension(bool inCreepyDimension)
     {
-        Manager.self.SwitchDimension(inCreepyDimension);
         m_inCreepyDimension = inCreepyDimension;
+        Manager.self.SwitchDimension(inCreepyDimension);
         OnDimensionSwitched?.Invoke(m_inCreepyDimension);
     }
 
