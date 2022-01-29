@@ -7,7 +7,9 @@ public class FlashImage
 {
     GameObject m_flashOBJ;
     Image m_flashIMG;
-    float m_flashSpeed = 0.01f;
+    float m_flashSpeed = 50.0f;
+    bool m_isFlashing = false;
+
     public FlashImage()
     {
         m_flashOBJ = GameObject.Instantiate(Resources.Load("FlashImage") as GameObject, Vector3.zero, Quaternion.identity);
@@ -18,22 +20,39 @@ public class FlashImage
         m_flashOBJ.GetComponent<RectTransform>().anchorMax = new Vector2(0.0f, 1.0f);
         m_flashOBJ.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         m_flashOBJ.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
-        m_flashIMG.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        m_flashIMG.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
+
+    bool IsFlashing() { return m_isFlashing; }
 
     public IEnumerator Flash(float _waitTime)
     {
-        while (true)
+        m_isFlashing = true;
+        while (m_isFlashing)
         {
-            Color col = m_flashIMG.color;
-            if (col.a <= 0.0f || col.a >= 1.0f)
+            float alpha = m_flashIMG.color.a;
+            if (alpha < 0.0f)
+            {
+                alpha = 0.0f;
                 m_flashSpeed *= -1.0f;
+            }
+            else if(alpha >= 1.0f)
+            {
+                alpha = 1.0f;
+                m_flashSpeed *= -1.0f;
+            }
 
-            col.a += m_flashSpeed * Time.deltaTime;
-            m_flashIMG.color = col;
-
+            alpha += m_flashSpeed * Time.deltaTime;
+            m_flashIMG.color = new Color(0.0f, 0.0f, 0.0f, alpha);
+           
             yield return new WaitForSeconds(_waitTime);
         }
 
     }
+    public void StopFlash()
+    {
+        m_isFlashing = false;
+        m_flashIMG.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+	}
+
 }

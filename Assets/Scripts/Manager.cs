@@ -6,11 +6,15 @@ public class Manager : MonoBehaviour
 {
     public static HUD m_hud;
     public static Counter m_counter;
+    public static Manager self;
 
     //Camera Data
     Camera m_camera;
     float m_minFOV = 0;
     float m_maxFOV = 90;
+
+    //Corutines
+    IEnumerator flashThread = null;
 
     enum SceneState
     {
@@ -19,11 +23,12 @@ public class Manager : MonoBehaviour
         ssWIN_MENU = 2,
         ssOPTIONS_MENU = 3,
         ssLEVEL_X = 4 
-	} SceneState m_sceneState;
+	} SceneState m_sceneState  = SceneState.ssLEVEL_X;
 
     // Start is called before the first frame update
     void Awake()
     {
+        self = this;
         //constant in all scenes
         DontDestroyOnLoad(gameObject);
 
@@ -32,6 +37,8 @@ public class Manager : MonoBehaviour
 
         m_camera = Camera.main;
         m_camera.fieldOfView = m_maxFOV;
+
+        
     }
 
     // Update is called once per frame
@@ -57,7 +64,7 @@ public class Manager : MonoBehaviour
 			}break;
             case SceneState.ssLEVEL_X:
             {
-                    CalculateCameraFOV();
+                CalculateCameraFOV();
             }
             break;
             default:
@@ -66,6 +73,22 @@ public class Manager : MonoBehaviour
 			}break;
 		}
       
+    }
+
+    public void SwitchDimension(bool _isDark)
+    {
+        if (_isDark)
+        {
+            m_counter.StartTimer();
+            flashThread = HUD.ImageToFlash.Flash(0.1f);
+            StartCoroutine(flashThread);
+        }
+        else
+        {
+            m_counter.Stop();
+            HUD.ImageToFlash.StopFlash();
+           
+        }
     }
 
     public void CalculateCameraFOV()
@@ -81,6 +104,4 @@ public class Manager : MonoBehaviour
             m_camera.fieldOfView = m_maxFOV;
         }
     }
-
-   
 }
