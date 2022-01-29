@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
@@ -9,10 +10,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     private CharacterController cc;
-
+    Rigidbody rig;
+    Surface.SurfaceTypes m_surfaceType = Surface.SurfaceTypes.stNORMAL;
+    GameObject m_collidedWith;
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
+        rig = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -22,10 +26,36 @@ public class PlayerController : MonoBehaviour
         float h_input = Input.GetAxisRaw("Horizontal");
         float v_input = Input.GetAxisRaw("Vertical");
 
+        
         velocity = new Vector3(h_input, 0, v_input) * movementSpeed;
-        if (velocity != Vector3.zero) transform.forward = velocity.normalized;
-        velocity.y -= gravity;
 
-        cc.Move(velocity * Time.deltaTime);
+        switch(m_surfaceType)
+        {
+            case Surface.SurfaceTypes.stSLIPPERY:
+            {
+                velocity.y -= gravity;
+
+                rig.AddForce(velocity);
+            }
+            break;
+            case Surface.SurfaceTypes.stNORMAL:
+            {
+                if (velocity != Vector3.zero) transform.forward = velocity.normalized;
+                velocity.y -= gravity;
+
+                cc.Move(velocity * Time.deltaTime);
+            }
+            break;
+		}
     }
+
+	/*private void OnCollisionEnter(Collision collision)
+	{
+        if (m_collidedWith == collision.gameObject || collision.gameObject == gameObject)
+            return;
+		if(collision.gameObject.GetComponent<Surface>())
+        {
+            m_surfaceType = collision.gameObject.GetComponent<Surface>().m_surfaceTypes;
+        }
+	}*/
 }
