@@ -29,7 +29,7 @@ public class DimensionalObject : MonoBehaviour
 
         if (gameObject.GetComponent<Door>() != null && !gameObject.GetComponent<Door>().DoorState)
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             return;
         }
 

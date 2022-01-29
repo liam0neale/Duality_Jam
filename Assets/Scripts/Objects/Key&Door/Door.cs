@@ -45,7 +45,6 @@ public class Door : MonoBehaviour
         if (lastDoor) FindObjectOfType<LevelManager>().HandleLevelComplete();
 
         this.gameObject.SetActive(false);
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -62,13 +61,12 @@ public class Door : MonoBehaviour
 
     private void OnEnable()
     {
+        doorState = true;
         if (firstCall)
         {
-            doorState = true;
             firstCall = false;
             return;
         }
-        doorState = true;
         OpenningAndClosingDoorParticleEffect(false);
     }
 
