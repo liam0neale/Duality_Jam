@@ -8,6 +8,7 @@ public class FlashImage
     GameObject m_flashOBJ;
     Image m_flashIMG;
     float m_flashSpeed = 0.01f;
+    bool m_isFlashing = false;
     public FlashImage()
     {
         m_flashOBJ = GameObject.Instantiate(Resources.Load("FlashImage") as GameObject, Vector3.zero, Quaternion.identity);
@@ -21,8 +22,11 @@ public class FlashImage
         m_flashIMG.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
 
+    bool IsFlashing() { return m_isFlashing; }
+
     public IEnumerator Flash(float _waitTime)
     {
+        m_isFlashing = true;
         while (true)
         {
             Color col = m_flashIMG.color;
@@ -36,4 +40,10 @@ public class FlashImage
         }
 
     }
+    public void StopFlash()
+    {
+        m_isFlashing = false;
+        m_flashIMG.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+	}
+
 }

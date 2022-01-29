@@ -34,7 +34,7 @@ public class Counter : MonoBehaviour
     /* sets to zero
      * then starts
      */
-    public void Start()
+    public void StartTimer()
     {
         m_currentTime = 0.0f;
         Resume();

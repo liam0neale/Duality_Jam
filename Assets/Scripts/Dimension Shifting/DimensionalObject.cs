@@ -21,7 +21,7 @@ public class DimensionalObject : MonoBehaviour
         {
             m_inCreepyDimension = inCreepyDimension;
         }
-
+       
         gameObject.SetActive(m_inCreepyDimension == inCreepyDimension);
     }
 }
