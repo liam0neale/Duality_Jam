@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 836776054205687459}
   - component: {fileID: 836776054205687458}
   m_Layer: 0
-  m_Name: LevelSix
+  m_Name: LevelSix_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerStartingPosition: {fileID: 836776053881046056}
+  m_darkTimer: 10
 --- !u!114 &4405918557406495433
 MonoBehaviour:
   m_ObjectHideFlags: 0
