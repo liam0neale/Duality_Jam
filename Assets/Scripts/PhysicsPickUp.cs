@@ -26,6 +26,9 @@ public class PhysicsPickUp : MonoBehaviour
             Collider[] interactables = Physics.OverlapSphere(m_pickupTarget.position, m_pickupRange, m_interactableMask);
             foreach (Collider interactable in interactables)
             {
+
+                //Debug.Log("Hello there");
+                //CarriedObject.tag = "Respawn";
                 if (interactable.gameObject == CarriedObject)
                 {
                     continue;
@@ -39,12 +42,14 @@ public class PhysicsPickUp : MonoBehaviour
                 else if (CarriedObject == null)
                 {
                     m_previousParent = interactable.transform.parent;
-
+                    
                     interactable.transform.parent = m_pickupTarget;
                     interactable.transform.position = m_pickupTarget.position;
                     interactable.transform.rotation = m_pickupTarget.rotation;
 
                     CarriedObject = interactable.gameObject;
+                    Debug.Log("Pickup");
+                    CarriedObject.tag = "Respawn";
                     skipDrop = true;
                 }
             }
@@ -61,7 +66,15 @@ public class PhysicsPickUp : MonoBehaviour
                     CarriedObject.GetComponent<Bomb>().PlayerLetBombGo();
                 }
 
-                CarriedObject.transform.parent = m_previousParent;
+                if(transform.parent != null && transform.parent.tag == "Platforms")
+                {
+                    CarriedObject.transform.parent = transform.parent;
+                }
+                else
+                {
+                    CarriedObject.transform.parent = null;
+                }
+
                 m_previousParent = null;
                 CarriedObject = null;
             }
