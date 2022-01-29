@@ -6,6 +6,8 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private int doorKey;
     [SerializeField] private GameObject doorOpenningParticleEffect;
+    [SerializeField] private GameObject doorClosingParticleEffect;
+    [SerializeField] private bool firstCall = true;
 
     public bool TryOpenDoor(int key)
     {
@@ -22,13 +24,11 @@ public class Door : MonoBehaviour
         // Openning Door Audio (TODO)
 
         // Particle System
-        GameObject smokePuff = Instantiate(doorOpenningParticleEffect, transform.position, transform.rotation) as GameObject;
-        ParticleSystem parts = smokePuff.GetComponent<ParticleSystem>();
-        float totalDuration = parts.main.duration + parts.main.startLifetime.constant;
-        Destroy(smokePuff, totalDuration);
+        OpenningAndClosingDoorParticleEffect();
 
-        // Destroy Door
-        Destroy(this.gameObject);
+        // Set Door to inactive
+        //Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,5 +41,24 @@ public class Door : MonoBehaviour
                 key.DestroyKey();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        if (firstCall)
+        {
+            firstCall = false;
+            return;
+        }
+        OpenningAndClosingDoorParticleEffect(false);
+    }
+
+    private void OpenningAndClosingDoorParticleEffect(bool openning = true)
+    {
+        // Particle System
+        GameObject smokePuff = Instantiate((openning ? doorOpenningParticleEffect : doorClosingParticleEffect), transform.position, transform.rotation) as GameObject;
+        ParticleSystem parts = smokePuff.GetComponent<ParticleSystem>();
+        float totalDuration = parts.main.duration + parts.main.startLifetime.constant;
+        Destroy(smokePuff, totalDuration);
     }
 }

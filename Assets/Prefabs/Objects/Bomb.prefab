@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6d9e89d10509ce541bddb296c80121b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,8 +111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBeforeExplosion: 1
+  timeBetweenTicks: 0.2
   bombRange: 5
   explostionParticleEffect: {fileID: 4717319949934167847, guid: 933dbe0352b533e489eaab7c8bca1e9e, type: 3}
+  normalMat: {fileID: 2100000, guid: 6d9e89d10509ce541bddb296c80121b5, type: 2}
+  tickingMat: {fileID: 2100000, guid: 4f525b7f6de4d01459f11330af007368, type: 2}
 --- !u!54 &8758562818294992037
 Rigidbody:
   m_ObjectHideFlags: 0
