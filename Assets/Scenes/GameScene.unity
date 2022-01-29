@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -652,12 +652,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
       propertyPath: m_levelPrefabs.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
       propertyPath: m_levelPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 5931500078451523445, guid: d34c1c0278c2fe54ab415bc99d6f1913, type: 3}
+      objectReference: {fileID: 5931500078451523445, guid: bff10b373b8241f4b99f69b23f6c50c1, type: 3}
     - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
       propertyPath: m_levelPrefabs.Array.data[1]
       value: 
@@ -665,10 +665,22 @@ PrefabInstance:
     - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
       propertyPath: m_levelPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 5931500078451523445, guid: e0c2fa8a9caee20478adddd6a6e63e41, type: 3}
+      objectReference: {fileID: 5931500078451523445, guid: bff10b373b8241f4b99f69b23f6c50c1, type: 3}
     - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
       propertyPath: m_levelPrefabs.Array.data[4]
       value: 
+      objectReference: {fileID: 5931500078451523445, guid: e0c2fa8a9caee20478adddd6a6e63e41, type: 3}
+    - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
+      propertyPath: m_levelPrefabs.Array.data[5]
+      value: 
       objectReference: {fileID: 836776054205687458, guid: bf06ac93238afb145a13411c91fd8bbe, type: 3}
+    - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
+      propertyPath: m_levelPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 5931500078451523445, guid: f50d5275fbb1296459e7e16c270ac576, type: 3}
+    - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
+      propertyPath: m_levelPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 5931500078451523445, guid: d34c1c0278c2fe54ab415bc99d6f1913, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
