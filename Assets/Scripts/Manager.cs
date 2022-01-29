@@ -27,13 +27,22 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CalculateCameraFOV();
+    }
+
+
+
+    public void CalculateCameraFOV()
+    {
         if (m_counter.IsCounting())
         {
             float distance = m_counter.GetDistanceThrough();
             float fov = (1 - distance) * (m_maxFOV - m_minFOV);
-            //m_camera.fieldOfView = fov;
-
-            StartCoroutine(m_hud.FlashImage(0.1f));
+            m_camera.fieldOfView = fov;
+        }
+        else
+        {
+            m_camera.fieldOfView = m_maxFOV;
         }
     }
 }
