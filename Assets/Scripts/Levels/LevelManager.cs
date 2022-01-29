@@ -31,7 +31,13 @@ public class LevelManager : MonoBehaviour
 
     public void ResetLevel()
     {
-        m_currentLevelInstance.ResetLevel();
+        if (m_currentLevelInstance != null)
+        {
+            Destroy(m_currentLevelInstance.gameObject);
+        }
+
+        m_currentLevelInstance = Instantiate(m_levelPrefabs[m_currentLevelIndex]);
+        FindObjectOfType<PhysicsPickUp>().ResetCarried();
     }
 
     private IEnumerator DelayLevelLoad()

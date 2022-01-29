@@ -13,9 +13,11 @@ public class Level : MonoBehaviour
         m_playerController.transform.position = m_playerStartingPosition.position;
         m_playerController.transform.rotation = m_playerStartingPosition.rotation;
         m_playerController.enabled = true;
-        
-        if(Manager.m_counter != null && m_darkTimer != 0)
+
+        if (Manager.m_counter != null && m_darkTimer != 0)
+        {
             Manager.m_counter.SetTimeLimit(m_darkTimer);
+        }
     }
 
     private void Awake()
