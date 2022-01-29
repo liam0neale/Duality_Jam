@@ -4,11 +4,13 @@ using UnityEngine;
 public class DimensionSwitcher : MonoBehaviour
 {
     public static event Action<bool> OnDimensionSwitched;
-    public static bool InCreepyDimension { get; private set; } = false;
+    public static bool InCreepyDimension => m_inCreepyDimension;
 
     [SerializeField] private Shader m_shader;
 
     private Material m_material;
+
+    private static bool m_inCreepyDimension = false;
 
     private void Start()
     {
@@ -17,7 +19,7 @@ public class DimensionSwitcher : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (InCreepyDimension)
+        if (m_inCreepyDimension)
         {
             Graphics.Blit(source, destination, m_material);
             if (Manager.m_counter.IsCounting() == false)
@@ -35,13 +37,13 @@ public class DimensionSwitcher : MonoBehaviour
 
     public static void SwitchDimension(bool inCreepyDimension)
     {
-        InCreepyDimension = inCreepyDimension;
-        OnDimensionSwitched?.Invoke(InCreepyDimension);
+        m_inCreepyDimension = inCreepyDimension;
+        OnDimensionSwitched?.Invoke(m_inCreepyDimension);
     }
 
     [ContextMenu("Switch Dimension")]
     private void SwitchDimensionContextMenu()
     {
-        SwitchDimension(!InCreepyDimension);
+        SwitchDimension(!m_inCreepyDimension);
     }
 }

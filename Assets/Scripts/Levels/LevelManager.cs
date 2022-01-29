@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private float m_levelLoadDelay = 1f;
     [SerializeField] private Level[] m_levelPrefabs;
 
     private Level m_currentLevelInstance = null;
@@ -23,12 +25,20 @@ public class LevelManager : MonoBehaviour
 
     public void HandleLevelComplete()
     {
-        LoadNextLevel();
+        DimensionSwitcher.SwitchDimension(false);
+        StartCoroutine(DelayLevelLoad());
     }
 
     public void ResetLevel()
     {
         m_currentLevelInstance.ResetLevel();
+    }
+
+    private IEnumerator DelayLevelLoad()
+    {
+        yield return new WaitForSeconds(m_levelLoadDelay);
+
+        LoadNextLevel();
     }
 
     private void LoadNextLevel()

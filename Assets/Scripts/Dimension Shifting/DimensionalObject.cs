@@ -15,6 +15,11 @@ public class DimensionalObject : MonoBehaviour
         OnDimensionSwitched(DimensionSwitcher.InCreepyDimension);
     }
 
+    private void OnDestroy()
+    {
+        DimensionSwitcher.OnDimensionSwitched -= OnDimensionSwitched;
+    }
+
     private void OnDimensionSwitched(bool inCreepyDimension)
     {
         if (m_playerPickup != null && m_playerPickup.CarriedObject != null && m_playerPickup.CarriedObject == gameObject)
