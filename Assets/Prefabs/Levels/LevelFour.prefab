@@ -2070,6 +2070,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3925048852676257315, guid: 9d902e2563fa00848aba52f7e06f1a1a, type: 3}
+      propertyPath: bombRange
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3925048852676257319, guid: 9d902e2563fa00848aba52f7e06f1a1a, type: 3}
       propertyPath: m_RootOrder
       value: 7
