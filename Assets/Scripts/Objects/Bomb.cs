@@ -17,6 +17,8 @@ public class Bomb : MonoBehaviour
     private bool normMat = true;
     private float timeBeforeNextTick = 0;
 
+    private PressurePlate plate;
+
     public void PlayerLetBombGo()
     {
         timerStarted = true;
@@ -41,26 +43,17 @@ public class Bomb : MonoBehaviour
         }
 
         // Particle System
-        GameObject smokePuff = Instantiate(explostionParticleEffect, transform.position, transform.rotation) as GameObject;
+        GameObject smokePuff = Instantiate(explostionParticleEffect, transform.position, new Quaternion(0, 0, 0, 0) /*, transform.rotation*/) as GameObject;
         ParticleSystem parts = smokePuff.GetComponent<ParticleSystem>();
         float totalDuration = parts.main.duration + parts.main.startLifetime.constant;
         Destroy(smokePuff, totalDuration);
 
-        Destroy(this.gameObject);
-    }
-
-    private void CheckDirection(Vector3 dir)
-    {
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, transform.TransformDirection(dir), bombRange);
-
-        foreach (RaycastHit hit in hits)
+        // Makes sure if colliding on pressure plate, it will turn off
+        if (plate != null)
         {
-            if (hit.collider.gameObject.GetComponent<DestructableObjects>() != null)
-            {
-                hit.collider.gameObject.GetComponent<DestructableObjects>().DestroyObject();
-            }
+            plate.DeleteObjectOnPlate();
         }
+        Destroy(this.gameObject);
     }
 
     void Update()
@@ -80,7 +73,25 @@ public class Bomb : MonoBehaviour
             if (timeBeforeExplosion <= 0)
             {
                 Explode();
+                timerStarted = false;
             }
         }
     }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.GetComponent<PressurePlate>() != null)
+        {
+            plate = collision.gameObject.GetComponent<PressurePlate>();
+        }
+    }
+
+    void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.GetComponent<PressurePlate>() != null && collision.gameObject.GetComponent<PressurePlate>() == plate)
+        {
+            plate = null;
+        }
+    }
+
 }

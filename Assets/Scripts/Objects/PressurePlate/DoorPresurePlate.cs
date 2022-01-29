@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoorPresurePlate : PressurePlate
 {
+    [SerializeField] private bool opensDoor = true;
     [SerializeField] private GameObject doorObject;
     private Door door;
 
@@ -15,12 +16,27 @@ public class DoorPresurePlate : PressurePlate
     protected override void PressurePlateDown()
     {
         plate.PressurePlateDown();
-        if (doorObject != null) door.OpenDoor();
+        OpenCloseDoor(opensDoor);
     }
 
     protected override void PressurePlateUp()
     {
         plate.PressurePlateUp();
-        if (doorObject != null) doorObject.SetActive(true);
+        OpenCloseDoor(!opensDoor);
+    }
+
+    private void OpenCloseDoor(bool open)
+    {
+        if (doorObject != null)
+        {
+            if (open)
+            {
+                door.OpenDoor();
+            }
+            else
+            {
+                doorObject.SetActive(true);
+            }
+        }
     }
 }
