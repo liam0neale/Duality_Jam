@@ -22,6 +22,7 @@ public class SceneData : MonoBehaviour
 		Options = 1,
 		Quit = 2
 	}
+
 	private void Awake()
 	{
 		foreach(var bData in m_buttons)
