@@ -44,6 +44,12 @@ public class SceneController
         SceneManager.LoadScene(CurrentSceneIndex);
     }
 
+    public static void LoadFirstLevel()
+    {
+        LoadLevel(LEVEL_1_INDEX);
+    }
+
+
     static bool IndexInRange()
     {
         if (CurrentSceneIndex >= SceneManager.sceneCount)
