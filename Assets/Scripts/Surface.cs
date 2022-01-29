@@ -9,7 +9,7 @@ public class Surface : MonoBehaviour
     {
         stNORMAL = 0,
         stSLIPPERY = 1,
-       // stSTICKY = 2
+        stSTICKY = 2
     }
     [SerializeField] public SurfaceTypes m_surfaceTypes;
 
