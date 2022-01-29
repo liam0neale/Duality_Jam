@@ -9,14 +9,21 @@ public class LevelManager : MonoBehaviour
     private Level m_currentLevelInstance = null;
     private int m_currentLevelIndex = 0;
 
+    bool m_loadedFirstLevel = false;
+
     private void Awake()
     {
-        m_currentLevelIndex = -1;
-        LoadNextLevel();
+        
     }
 
     private void Update()
     {
+        if(!m_loadedFirstLevel)
+        {
+            m_currentLevelIndex = -1;
+            LoadNextLevel();
+            m_loadedFirstLevel = true;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ResetLevel();
