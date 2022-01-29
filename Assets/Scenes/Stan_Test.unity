@@ -772,6 +772,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 304235583180081392, guid: 7e209272bf8b45d4b941c7dd845f5982, type: 3}
   m_PrefabInstance: {fileID: 1003848950}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1003848952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003848951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b381efe57ab314c9009f34f5c3f069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_inCreepyDimension: 0
 --- !u!1 &1094825204 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1580205285417116192, guid: e1c773c4bb5464e428ece13e87576084, type: 3}
@@ -792,6 +805,24 @@ MonoBehaviour:
   plate: {fileID: 2045201368}
   opensDoor: 0
   doorObject: {fileID: 1003848951}
+--- !u!1 &1349301379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3925048852676257314, guid: 9d902e2563fa00848aba52f7e06f1a1a, type: 3}
+  m_PrefabInstance: {fileID: 3925048853025661234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1349301380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349301379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b381efe57ab314c9009f34f5c3f069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_inCreepyDimension: 1
 --- !u!1 &1536744943
 GameObject:
   m_ObjectHideFlags: 0

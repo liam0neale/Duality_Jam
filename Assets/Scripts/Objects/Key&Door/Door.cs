@@ -10,6 +10,19 @@ public class Door : MonoBehaviour
     [SerializeField] private GameObject doorClosingParticleEffect;
     [SerializeField] private bool firstCall = true;
 
+    public bool DoorState
+    {
+        get
+        {
+            return doorState;
+        }
+        private set
+        {
+            doorState = value;
+        }
+    }
+    private bool doorState = false;
+
     public bool TryOpenDoor(int key)
     {
         if (key == doorKey)
@@ -28,10 +41,11 @@ public class Door : MonoBehaviour
         OpenningAndClosingDoorParticleEffect();
 
         // Set Door to inactive
-        //Destroy(this.gameObject);
+        doorState = false;
+        if (lastDoor) FindObjectOfType<LevelManager>().HandleLevelComplete();
+
         this.gameObject.SetActive(false);
 
-        if (lastDoor) FindObjectOfType<LevelManager>().HandleLevelComplete();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -50,9 +64,11 @@ public class Door : MonoBehaviour
     {
         if (firstCall)
         {
+            doorState = true;
             firstCall = false;
             return;
         }
+        doorState = true;
         OpenningAndClosingDoorParticleEffect(false);
     }
 
