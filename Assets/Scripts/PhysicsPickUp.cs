@@ -9,6 +9,14 @@ public class PhysicsPickUp : MonoBehaviour
 
     private Transform m_previousParent;
 
+    public void ResetCarried()
+    {
+        m_previousParent = null;
+
+        Destroy(CarriedObject);
+        CarriedObject = null;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
