@@ -21,22 +21,17 @@ public class DimensionSwitcher : MonoBehaviour
     {
         if (m_inCreepyDimension)
         {
-            Graphics.Blit(source, destination, m_material);
-            if (Manager.m_counter.IsCounting() == false)
-                Manager.m_counter.Start();
+            Graphics.Blit(source, destination, m_material);    
         }
         else
         {
             Graphics.Blit(source, destination);
-            if (Manager.m_counter.IsCounting() == true)
-            {
-                Manager.m_counter.Stop(); 
-            }
         }
     }
 
     public static void SwitchDimension(bool inCreepyDimension)
     {
+        Manager.self.SwitchDimension(inCreepyDimension);
         m_inCreepyDimension = inCreepyDimension;
         OnDimensionSwitched?.Invoke(m_inCreepyDimension);
     }
