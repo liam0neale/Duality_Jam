@@ -277,6 +277,7 @@ MonoBehaviour:
   m_darkTimer: 20
   m_cameraRotates: 0
   m_cameraMoves: 1
+  m_cameraTransform: {fileID: 0}
 --- !u!1 &5931500079806701040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5792c8f9e46481743acba6a42399728a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.99
+      value: 12.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5792c8f9e46481743acba6a42399728a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1161,7 +1162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5792c8f9e46481743acba6a42399728a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.37
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5792c8f9e46481743acba6a42399728a, type: 3}
       propertyPath: m_LocalRotation.w
