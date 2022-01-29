@@ -1,5 +1,13 @@
+using UnityEngine;
+
 public class DimensionSwitch : Switch
 {
+    private void Awake()
+    {
+        SwitchState = DimensionSwitcher.InCreepyDimension;
+        UpdateModel();
+    }
+
     public void SwitchDimension()
     {
         SwitchState = !SwitchState;
@@ -14,5 +22,4 @@ public class DimensionSwitch : Switch
     {
         DimensionSwitcher.SwitchDimension(false);
     }
-
 }
