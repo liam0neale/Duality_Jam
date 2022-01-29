@@ -22,6 +22,11 @@ public class Switch : MonoBehaviour
     }
     bool switchState = false;
 
+    public void FlipState()
+    {
+        SwitchState = !switchState;
+    }
+
     protected virtual void SwitchedOn()
     {
 
