@@ -51,7 +51,7 @@ public class Bomb : MonoBehaviour
         // Makes sure if colliding on pressure plate, it will turn off
         if (plate != null)
         {
-            plate.DeleteObjectOnPlate();
+            plate.DeleteObjectOnPlate(this.gameObject);
         }
         Destroy(this.gameObject);
     }
