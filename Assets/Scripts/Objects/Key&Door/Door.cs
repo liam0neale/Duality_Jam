@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    [SerializeField] private bool lastDoor = true;
     [SerializeField] private int doorKey;
     [SerializeField] private GameObject doorOpenningParticleEffect;
     [SerializeField] private GameObject doorClosingParticleEffect;
@@ -29,7 +30,8 @@ public class Door : MonoBehaviour
         // Set Door to inactive
         //Destroy(this.gameObject);
         this.gameObject.SetActive(false);
-        FindObjectOfType<LevelManager>().HandleLevelComplete();
+
+        if (lastDoor) FindObjectOfType<LevelManager>().HandleLevelComplete();
     }
 
     private void OnCollisionEnter(Collision collision)
