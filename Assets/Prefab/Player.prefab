@@ -194,6 +194,9 @@ MonoBehaviour:
   PickupMask:
     serializedVersion: 2
     m_Bits: 64
+  SwitchMask:
+    serializedVersion: 2
+    m_Bits: 128
   PlayerCamera: {fileID: 0}
   PickupTarget: {fileID: 5015691167229546611}
   PickupRange: 10

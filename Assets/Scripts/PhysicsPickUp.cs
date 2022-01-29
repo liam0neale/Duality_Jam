@@ -48,6 +48,7 @@ public class PhysicsPickUp : MonoBehaviour
             if(Physics.Raycast(ray, out HitInfo, PickupRange, SwitchMask))
             {
                 Debug.Log("Hit switch");
+                HitInfo.collider.gameObject.GetComponent<Switch>().FlipState();
             }
 
             else
