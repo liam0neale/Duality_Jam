@@ -12,25 +12,61 @@ public class Manager : MonoBehaviour
     float m_minFOV = 0;
     float m_maxFOV = 90;
 
+    enum SceneState
+    {
+        ssMAIN_MENU = 0,
+        ssDEATH_MENU = 1,
+        ssWIN_MENU = 2,
+        ssOPTIONS_MENU = 3,
+        ssLEVEL_X = 4 
+	} SceneState m_sceneState;
 
     // Start is called before the first frame update
     void Awake()
     {
+        //constant in all scenes
+        DontDestroyOnLoad(gameObject);
+
         m_hud = gameObject.AddComponent<HUD>();
         m_counter = gameObject.AddComponent<Counter>();
 
         m_camera = Camera.main;
         m_camera.fieldOfView = m_maxFOV;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        CalculateCameraFOV();
+        switch(m_sceneState)
+        {
+            case SceneState.ssMAIN_MENU:
+            {
+                
+			}break;
+            case SceneState.ssDEATH_MENU:
+            {
+
+			}break;
+            case SceneState.ssWIN_MENU:
+            {
+
+			}break;
+            case SceneState.ssOPTIONS_MENU:
+            {
+                
+			}break;
+            case SceneState.ssLEVEL_X:
+            {
+                    CalculateCameraFOV();
+            }
+            break;
+            default:
+            {
+                    Debug.LogWarning("Manager::Update() -> not SceneState catchs for state = " + m_sceneState.ToString());
+			}break;
+		}
+      
     }
-
-
 
     public void CalculateCameraFOV()
     {
@@ -45,4 +81,6 @@ public class Manager : MonoBehaviour
             m_camera.fieldOfView = m_maxFOV;
         }
     }
+
+   
 }
