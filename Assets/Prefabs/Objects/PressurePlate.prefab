@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2802066841376416827}
   m_Layer: 0
   m_Name: PressurePlate
-  m_TagString: Untagged
+  m_TagString: PressurePlates
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

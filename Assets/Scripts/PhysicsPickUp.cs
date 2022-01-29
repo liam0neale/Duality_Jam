@@ -46,6 +46,13 @@ public class PhysicsPickUp : MonoBehaviour
 
                     CarriedObject = interactable.gameObject;
                     skipDrop = true;
+
+                    GameObject[] objs = GameObject.FindGameObjectsWithTag("PressurePlates");
+
+                    foreach (var plate in objs)
+                    {
+                        plate.GetComponent<PressurePlate>().CheckPlate(CarriedObject);
+                    }
                 }
             }
 
