@@ -38,8 +38,9 @@ public class SceneData : MonoBehaviour
 				}break;
 				case ButtonTypes.Quit:
 				{
-
-				}break;
+					bData.button.onClick.AddListener(delegate { Application.Quit(); }); 
+				}
+				break;
 				default:
 				{
 					Debug.LogWarning("SceneData::Awake() -> no case for button type = " + bData.type.ToString());
