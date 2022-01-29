@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerStartingPosition: {fileID: 5931500079806701055}
-  m_darkTimer: 0
+  m_darkTimer: 20
   m_cameraRotates: 0
   m_cameraMoves: 0
 --- !u!1 &5931500079806701040
