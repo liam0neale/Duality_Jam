@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    [SerializeField] PlateMovement plate;
+    [SerializeField] protected PlateMovement plate;
+    private int nbObjectsOnPlate = 0;
 
     public bool IsDown
     {
@@ -12,7 +13,7 @@ public class PressurePlate : MonoBehaviour
         {
             return isDown;
         }
-        set
+        private set
         {
             if (value != isDown)
             {
@@ -44,17 +45,24 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            IsDown = true;
-        }
+        nbObjectsOnPlate++;
+        SetState();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            IsDown = false;
-        }
+        nbObjectsOnPlate--;
+        SetState();
+    }
+
+    public void DeleteObjectOnPlate()
+    {
+        nbObjectsOnPlate--;
+        SetState();
+    }
+
+    private void SetState()
+    {
+        IsDown = (nbObjectsOnPlate > 0);
     }
 }
