@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.76, y: 1, z: 1}
+  m_Center: {x: 0.43, y: 0, z: 0}
 --- !u!114 &3897988299406593504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +66,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3897988299406593505}
     m_Modifications:
+    - target: {fileID: -5754084199372789682, guid: aaa2f28fb6f63cc49944e1b33d1dfc23, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: 96db592713a3d8041925641d4c8d5776, type: 3}
+    - target: {fileID: 919132149155446097, guid: aaa2f28fb6f63cc49944e1b33d1dfc23, type: 3}
+      propertyPath: m_Name
+      value: Key
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96db592713a3d8041925641d4c8d5776, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -84,11 +92,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96db592713a3d8041925641d4c8d5776, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.332
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96db592713a3d8041925641d4c8d5776, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.318
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96db592713a3d8041925641d4c8d5776, type: 3}
       propertyPath: m_LocalPosition.z
@@ -121,14 +129,6 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 96db592713a3d8041925641d4c8d5776, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: -5754084199372789682, guid: aaa2f28fb6f63cc49944e1b33d1dfc23, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 2534964839176971238, guid: 96db592713a3d8041925641d4c8d5776, type: 3}
-    - target: {fileID: 919132149155446097, guid: aaa2f28fb6f63cc49944e1b33d1dfc23, type: 3}
-      propertyPath: m_Name
-      value: Key
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96db592713a3d8041925641d4c8d5776, type: 3}
