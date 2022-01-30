@@ -24,9 +24,15 @@ public class LevelManager : MonoBehaviour
             LoadNextLevel();
             m_loadedFirstLevel = true;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
             ResetLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 

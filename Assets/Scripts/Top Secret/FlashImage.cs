@@ -7,7 +7,7 @@ public class FlashImage
 {
     GameObject m_flashOBJ;
     Image m_flashIMG;
-    float m_flashSpeed = 50.0f;
+    float m_flashSpeed = 10.0f;
     bool m_isFlashing = false;
 
     private float m_maxAlpha = 0.6f;

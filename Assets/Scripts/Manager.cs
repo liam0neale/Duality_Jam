@@ -87,7 +87,7 @@ public class Manager : MonoBehaviour
         if (_isDark)
         {
             m_counter.StartTimer();
-            flashThread = HUD.ImageToFlash.Flash(0.25f);
+            flashThread = HUD.ImageToFlash.Flash(0.5f);
             StartCoroutine(flashThread);
         }
         else
