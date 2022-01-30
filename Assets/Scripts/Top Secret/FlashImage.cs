@@ -10,6 +10,9 @@ public class FlashImage
     float m_flashSpeed = 50.0f;
     bool m_isFlashing = false;
 
+    private float m_maxAlpha = 0.6f;
+    private float m_minAlpha = 0.0f;
+
     public FlashImage()
     {
         m_flashOBJ = GameObject.Instantiate(Resources.Load("FlashImage") as GameObject, Vector3.zero, Quaternion.identity);
@@ -31,14 +34,14 @@ public class FlashImage
         while (m_isFlashing)
         {
             float alpha = m_flashIMG.color.a;
-            if (alpha < 0.0f)
+            if (alpha < m_minAlpha)
             {
-                alpha = 0.0f;
+                alpha = m_minAlpha;
                 m_flashSpeed *= -1.0f;
             }
-            else if(alpha >= 1.0f)
+            else if(alpha >= m_maxAlpha)
             {
-                alpha = 1.0f;
+                alpha = m_maxAlpha;
                 m_flashSpeed *= -1.0f;
             }
 
