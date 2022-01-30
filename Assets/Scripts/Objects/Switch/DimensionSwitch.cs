@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DimensionSwitch : Switch
 {
-    private AudioSource au;
+    [SerializeField] private AudioSource au;
     [SerializeField] private AudioClip switchToDimensionSound;
     [SerializeField] private AudioClip switchBackDimensionSound;
 
@@ -12,11 +12,6 @@ public class DimensionSwitch : Switch
         UpdateModel();
     }
 
-    private void Start()
-    {
-        au = GetComponent<AudioSource>();
-    }
-
     public void SwitchDimension()
     {
         SwitchState = !DimensionSwitcher.InCreepyDimension;
@@ -24,15 +19,16 @@ public class DimensionSwitch : Switch
 
     protected override void SwitchedOn()
     {
+        DimensionSwitcher.SwitchDimension(!DimensionSwitcher.InCreepyDimension);
+        Debug.Log(au);
         if (au.isPlaying) au.Stop();
         au.PlayOneShot(switchToDimensionSound);
-        DimensionSwitcher.SwitchDimension(!DimensionSwitcher.InCreepyDimension);
     }
 
     protected override void SwitchedOff()
     {
+        DimensionSwitcher.SwitchDimension(!DimensionSwitcher.InCreepyDimension);
         if (au.isPlaying) au.Stop();
         au.PlayOneShot(switchBackDimensionSound);
-        DimensionSwitcher.SwitchDimension(!DimensionSwitcher.InCreepyDimension);
     }
 }

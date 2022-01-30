@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_leverMoveTransform: {fileID: 8422617780076203714}
+  au: {fileID: 6509694688384790532}
   switchToDimensionSound: {fileID: 8300000, guid: 8d3c5435eadc2a4479339f896c58fd4a, type: 3}
   switchBackDimensionSound: {fileID: 8300000, guid: 7beaa2da819547149be5ce9c61f2b1ff, type: 3}
 --- !u!82 &6509694688384790532
