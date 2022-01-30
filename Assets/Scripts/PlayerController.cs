@@ -24,7 +24,11 @@ public class PlayerController : MonoBehaviour
 
         velocity = new Vector3(h_input, 0, v_input) * movementSpeed;
         if (velocity != Vector3.zero) transform.forward = velocity.normalized;
-        velocity.y -= gravity;
+
+        if (!cc.isGrounded)
+        {
+            velocity.y -= gravity;
+        }
 
         cc.Move(velocity * Time.deltaTime);
     }
