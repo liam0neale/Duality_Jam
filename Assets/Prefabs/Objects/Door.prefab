@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 1}
+  m_Size: {x: 1, y: 3, z: 3}
   m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &118131432404375543
 MonoBehaviour:
@@ -76,15 +76,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -100,23 +100,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -126,6 +126,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: a560147577a8846469074294b50374da, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: f0cb9410a09c3944583ad1e5f9bd1e91, type: 3}
     - target: {fileID: 919132149155446097, guid: a560147577a8846469074294b50374da, type: 3}
       propertyPath: m_Name
       value: doorClosed
