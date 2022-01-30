@@ -70,7 +70,7 @@ public class Manager : MonoBehaviour
                 if (m_counter.IsTimeOver() && m_counter.IsCounting())
                 {
                     DimensionSwitcher.SwitchDimension(false);
-                    m_levelManager.ResetLevel();
+                    m_levelManager.ResetLevel(false);
                 }
             }
             break;

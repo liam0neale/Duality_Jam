@@ -6,7 +6,7 @@ public class PlayerDeathTrigger : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            FindObjectOfType<LevelManager>().ResetLevel();
+            FindObjectOfType<LevelManager>().ResetLevel(false);
         }
     }
 }
