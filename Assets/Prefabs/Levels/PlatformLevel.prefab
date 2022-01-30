@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerStartingPosition: {fileID: 5931500079806701055}
-  m_darkTimer: 0
+  m_darkTimer: 10
   m_cameraRotates: 0
   m_cameraMoves: 0
   m_cameraStartingPosition: {fileID: 6690772433007870216}
@@ -1147,6 +1147,10 @@ PrefabInstance:
     - target: {fileID: 4135480038041707560, guid: b19a8b34553a0674780bf8b0b9bc4029, type: 3}
       propertyPath: m_Name
       value: MovingPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 5184275691465840429, guid: b19a8b34553a0674780bf8b0b9bc4029, type: 3}
+      propertyPath: m_TagString
+      value: Platforms
       objectReference: {fileID: 0}
     - target: {fileID: 7410160759497539903, guid: b19a8b34553a0674780bf8b0b9bc4029, type: 3}
       propertyPath: isEnabled

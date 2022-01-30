@@ -38,7 +38,7 @@ public class PhysicsPickUp : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || (Input.GetButtonDown("Fire1")))
         {
             bool skipDrop = false;
 
@@ -65,7 +65,7 @@ public class PhysicsPickUp : MonoBehaviour
                     PlaySoundRandom(pickUpSounds);
 
                     m_previousParent = interactable.transform.parent;
-                    
+                    Debug.Log(m_previousParent);
                     interactable.transform.parent = m_pickupTarget;
                     interactable.transform.position = m_pickupTarget.position;
                     interactable.transform.rotation = m_pickupTarget.rotation;
@@ -104,7 +104,7 @@ public class PhysicsPickUp : MonoBehaviour
                 }
                 else
                 {
-                    CarriedObject.transform.parent = null;
+                    CarriedObject.transform.parent = m_previousParent;
                 }
 
                 m_previousParent = null;
