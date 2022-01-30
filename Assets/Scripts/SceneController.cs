@@ -13,21 +13,17 @@ public class SceneController
         SceneManager.LoadScene("MainMenu");
         CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 	}
-    public static void LoadWinMenu()
+    public static void LoadGameOver()
     {
-        SceneManager.LoadScene("WinMenu");
+        SceneManager.LoadScene("GameOverMenu");
         CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
-    public static void LoadDeathMenu()
-    {
-        SceneManager.LoadScene("DeathMenu");
-        CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-    }
     public static void ReloadScene()
     {
         SceneManager.LoadScene(CurrentSceneIndex);
     }
+
     public static void LoadNextLevel()
     {
         CurrentSceneIndex++;

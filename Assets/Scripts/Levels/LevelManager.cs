@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour
 
         if (m_currentLevelIndex >= m_levelPrefabs.Length)
         {
-            // TODO: Load Main Menu 
+            SceneController.LoadGameOver();
             return;
         }
 
