@@ -42,7 +42,7 @@ public class PhysicsPickUp : MonoBehaviour
                 else if (CarriedObject == null)
                 {
                     m_previousParent = interactable.transform.parent;
-                    
+                    Debug.Log(m_previousParent);
                     interactable.transform.parent = m_pickupTarget;
                     interactable.transform.position = m_pickupTarget.position;
                     interactable.transform.rotation = m_pickupTarget.rotation;
@@ -79,7 +79,7 @@ public class PhysicsPickUp : MonoBehaviour
                 }
                 else
                 {
-                    CarriedObject.transform.parent = null;
+                    CarriedObject.transform.parent = m_previousParent;
                 }
 
                 m_previousParent = null;
