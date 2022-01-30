@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(m_config.lookAtPlayer)
             gameObject.transform.LookAt(m_player.transform, Vector3.up);
