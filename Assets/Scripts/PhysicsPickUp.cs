@@ -19,7 +19,7 @@ public class PhysicsPickUp : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || (Input.GetButtonDown("Fire1")))
         {
             bool skipDrop = false;
 
