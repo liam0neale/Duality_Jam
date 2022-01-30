@@ -5,6 +5,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private float m_levelLoadDelay = 1f;
     [SerializeField] private Level[] m_levelPrefabs;
+    [SerializeField] private GameObject m_playerDead;
 
     private Level m_currentLevelInstance = null;
     private int m_currentLevelIndex = 0;
@@ -27,7 +28,7 @@ public class LevelManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ResetLevel();
+            ResetLevel(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -42,8 +43,34 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(DelayLevelLoad());
     }
 
-    public void ResetLevel()
+    public void ResetLevel(bool complete)
     {
+        if (!complete)
+        {
+            StartCoroutine(PlayerDeathEffect());
+            return;
+        }
+
+        if (m_currentLevelInstance != null)
+        {
+            Destroy(m_currentLevelInstance.gameObject);
+        }
+
+        m_currentLevelInstance = Instantiate(m_levelPrefabs[m_currentLevelIndex]);
+        FindObjectOfType<PhysicsPickUp>().ResetCarried();
+    }
+
+    private IEnumerator PlayerDeathEffect()
+    {
+        GameObject player = FindObjectOfType<PlayerController>().gameObject;
+        player.SetActive(false);
+        GameObject obj = Instantiate(m_playerDead, player.transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(m_levelLoadDelay);
+
+        Destroy(obj);
+        player.SetActive(true);
+
         if (m_currentLevelInstance != null)
         {
             Destroy(m_currentLevelInstance.gameObject);
