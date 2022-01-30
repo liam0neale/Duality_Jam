@@ -8,7 +8,8 @@ public class Level : MonoBehaviour
     [SerializeField] private float m_darkTimer;//timer to complete dark side in
     [SerializeField] private bool m_cameraRotates;//does the camera look at the player
     [SerializeField] private bool m_cameraMoves;//does the camera follow player
-    [SerializeField] private Transform m_cameraTransform;//does the camera follow player
+    [SerializeField] private Transform m_cameraStartingPosition;//camera starting position
+
     public void ResetLevel()
     {
         m_playerController.enabled = false;
@@ -18,7 +19,8 @@ public class Level : MonoBehaviour
 
         if (Manager.m_counter != null && m_darkTimer != 0)
         {
-            Camera.main.gameObject.transform.position = m_cameraTransform.position;
+            Camera.main.gameObject.transform.position = m_cameraStartingPosition.position;
+            Camera.main.gameObject.transform.rotation = m_cameraStartingPosition.rotation;
             Manager.m_counter.SetTimeLimit(m_darkTimer);
             Manager.m_camController.SetCameraLookAtPLayer(m_cameraRotates);
             Manager.m_camController.SetCameraMoveable(m_cameraMoves);
