@@ -7,14 +7,18 @@ public class DoorPresurePlate : PressurePlate
     [SerializeField] private bool opensDoor = true;
     [SerializeField] private GameObject doorObject;
     private Door door;
+    private AudioSource au;
+    [SerializeField] AudioClip plateSound;
 
     void Start()
     {
         door = doorObject.GetComponent<Door>();
+        au = GetComponent<AudioSource>();
     }
 
     protected override void PressurePlateDown()
     {
+        au.PlayOneShot(plateSound);
         plate.PressurePlateDown();
         OpenCloseDoor(opensDoor);
     }

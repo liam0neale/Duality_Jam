@@ -12,24 +12,29 @@ public class Bomb : MonoBehaviour
     [SerializeField] private Material normalMat;
     [SerializeField] private Material tickingMat;
 
-
     private bool timerStarted = false;
     private bool normMat = true;
     private float timeBeforeNextTick = 0;
 
     private PressurePlate plate;
 
+    private AudioSource au;
+    [SerializeField] AudioClip hissSound;
+
+    private void Start()
+    {
+        au = GetComponent<AudioSource>();
+    }
+
     public void PlayerLetBombGo()
     {
         timerStarted = true;
         timeBeforeNextTick = timeBetweenTicks;
+        au.PlayOneShot(hissSound);
     }
 
     private void Explode()
     {
-        // Explosion Audio
-
-
         // Check DestructableObjects
         RaycastHit[] hits;
         hits = Physics.SphereCastAll(transform.position, bombRange, transform.TransformDirection(Vector3.right));

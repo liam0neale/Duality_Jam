@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 public class PhysicsPickUp : MonoBehaviour
 {
     public GameObject CarriedObject { get; private set; } = null;
@@ -9,12 +12,28 @@ public class PhysicsPickUp : MonoBehaviour
 
     private Transform m_previousParent;
 
+    [SerializeField] private List<AudioClip> pickUpSounds = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> putDownSounds = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> leverSwitchSounds = new List<AudioClip>();
+    private AudioSource au;
+
+    private void Start()
+    {
+        au = GetComponent<AudioSource>();
+    }
+
     public void ResetCarried()
     {
         m_previousParent = null;
 
         Destroy(CarriedObject);
         CarriedObject = null;
+    }
+
+    private void PlaySoundRandom(List<AudioClip> clips)
+    {
+        int i = Random.Range(0, clips.Count);
+        au.PlayOneShot(clips[i]);
     }
 
     void Update()
@@ -36,11 +55,15 @@ public class PhysicsPickUp : MonoBehaviour
 
                 if (interactable.gameObject.GetComponent<Switch>() != null)
                 {
+                    PlaySoundRandom(leverSwitchSounds);
+
                     interactable.gameObject.GetComponent<Switch>().FlipState();
                     skipDrop = true;
                 }
                 else if (CarriedObject == null)
                 {
+                    PlaySoundRandom(pickUpSounds);
+
                     m_previousParent = interactable.transform.parent;
                     
                     interactable.transform.parent = m_pickupTarget;
@@ -68,6 +91,8 @@ public class PhysicsPickUp : MonoBehaviour
 
             if (CarriedObject != null)
             {
+                PlaySoundRandom(putDownSounds);
+
                 if (CarriedObject.GetComponent<Bomb>() != null)
                 {
                     CarriedObject.GetComponent<Bomb>().PlayerLetBombGo();
