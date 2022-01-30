@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    [SerializeField] private MeshRenderer meshToUse;
     [SerializeField] private float timeBeforeExplosion;
     [SerializeField] private float timeBetweenTicks;
     [SerializeField] private float bombRange;
@@ -67,7 +68,7 @@ public class Bomb : MonoBehaviour
             {
                 timeBeforeNextTick = timeBetweenTicks;
                 normMat = !normMat;
-                GetComponent<MeshRenderer>().material = normMat ? normalMat : tickingMat;
+                meshToUse.material = normMat ? normalMat : tickingMat;
             }
 
             if (timeBeforeExplosion <= 0)
