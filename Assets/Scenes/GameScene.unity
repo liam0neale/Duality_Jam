@@ -748,6 +748,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
+      propertyPath: m_playerDead
+      value: 
+      objectReference: {fileID: 7961129302817592776, guid: 4904862cefe8f30478ab93a67787d949, type: 3}
+    - target: {fileID: 3649848707024857242, guid: 6e7ee88dfcf2bed4280a5264e1e7f4a4, type: 3}
       propertyPath: m_levelPrefabs.Array.size
       value: 12
       objectReference: {fileID: 0}
