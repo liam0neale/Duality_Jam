@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Size: {x: 2, y: 1.3589593, z: 2}
+  m_Center: {x: 0, y: 0.92052037, z: 0}
 --- !u!54 &211850581755734448
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plate: {fileID: 5797626817534725590}
+  objectsOnPlate: []
   opensDoor: 1
   doorObject: {fileID: 0}
   plateSound: {fileID: 8300000, guid: 11a6fc2ca71a8514db6b2ebfd2c4f142, type: 3}

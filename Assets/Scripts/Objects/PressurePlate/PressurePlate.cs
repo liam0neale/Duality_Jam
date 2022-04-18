@@ -7,7 +7,7 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] protected PlateMovement plate;
     private int nbObjectsOnPlate = 0;
 
-    private List<GameObject> objectsOnPlate = new List<GameObject>();
+    [SerializeField] private List<GameObject> objectsOnPlate = new List<GameObject>();
 
     public bool IsDown
     {
@@ -49,8 +49,12 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.gameObject.transform.parent == null || other.gameObject.transform.parent.parent == null || (other.gameObject.transform.parent.parent.tag != "Player"))
         {
-            if (!objectsOnPlate.Contains(other.gameObject)) objectsOnPlate.Add(other.gameObject);
+            if (!objectsOnPlate.Contains(other.gameObject))
+            {
+                objectsOnPlate.Add(other.gameObject);
+            }
         }
+
         SetState();
     }
 

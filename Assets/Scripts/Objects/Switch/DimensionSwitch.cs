@@ -20,8 +20,12 @@ public class DimensionSwitch : Switch
     protected override void SwitchedOn()
     {
         DimensionSwitcher.SwitchDimension(!DimensionSwitcher.InCreepyDimension);
-        Debug.Log(au);
-        if (au.isPlaying) au.Stop();
+
+        if (au.isPlaying)
+        {
+            au.Stop();
+        }
+
         au.PlayOneShot(switchToDimensionSound);
     }
 

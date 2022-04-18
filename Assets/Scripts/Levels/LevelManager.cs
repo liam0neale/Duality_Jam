@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Level[] m_levelPrefabs;
     [SerializeField] private GameObject m_playerDead;
 
+    private PlayerController m_player = null;
+
     private Level m_currentLevelInstance = null;
     private int m_currentLevelIndex = 0;
 
@@ -14,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        m_player = FindObjectOfType<PlayerController>();
     }
 
     private void Update()
@@ -62,14 +64,13 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PlayerDeathEffect()
     {
-        GameObject player = FindObjectOfType<PlayerController>().gameObject;
-        player.SetActive(false);
-        GameObject obj = Instantiate(m_playerDead, player.transform.position, Quaternion.identity);
+        m_player.gameObject.SetActive(false);
+        GameObject obj = Instantiate(m_playerDead, m_player.gameObject.transform.position, Quaternion.identity);
 
         yield return new WaitForSeconds(m_levelLoadDelay);
 
         Destroy(obj);
-        player.SetActive(true);
+        m_player.gameObject.SetActive(true);
 
         if (m_currentLevelInstance != null)
         {
@@ -103,5 +104,6 @@ public class LevelManager : MonoBehaviour
         }
 
         m_currentLevelInstance = Instantiate(m_levelPrefabs[m_currentLevelIndex]);
+        m_currentLevelInstance.Camera.LookAt = m_player.transform;
     }
 }

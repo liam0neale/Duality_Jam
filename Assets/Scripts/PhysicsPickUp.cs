@@ -65,13 +65,11 @@ public class PhysicsPickUp : MonoBehaviour
                     PlaySoundRandom(pickUpSounds);
 
                     m_previousParent = interactable.transform.parent;
-                    Debug.Log(m_previousParent);
                     interactable.transform.parent = m_pickupTarget;
                     interactable.transform.position = m_pickupTarget.position;
                     interactable.transform.rotation = m_pickupTarget.rotation;
 
                     CarriedObject = interactable.gameObject;
-                    Debug.Log("Pickup");
                     CarriedObject.tag = "Respawn";
                     skipDrop = true;
 

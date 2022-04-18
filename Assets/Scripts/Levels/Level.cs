@@ -1,14 +1,15 @@
 using UnityEngine;
+using Cinemachine;
 
 public class Level : MonoBehaviour
 {
+    public CinemachineVirtualCamera Camera => m_camera;
+
     [SerializeField] Transform m_playerStartingPosition = default;
+    [SerializeField] private float m_darkTimer;//timer to complete dark side in
+    [SerializeField] private CinemachineVirtualCamera m_camera = default;
 
     private CharacterController m_playerController;
-    [SerializeField] private float m_darkTimer;//timer to complete dark side in
-    [SerializeField] private bool m_cameraRotates;//does the camera look at the player
-    [SerializeField] private bool m_cameraMoves;//does the camera follow player
-    [SerializeField] private Transform m_cameraStartingPosition;//camera starting position
 
     public void ResetLevel()
     {
@@ -19,11 +20,8 @@ public class Level : MonoBehaviour
 
         if (Manager.m_counter != null && m_darkTimer != 0)
         {
-            Camera.main.gameObject.transform.position = m_cameraStartingPosition.position;
-            Camera.main.gameObject.transform.rotation = m_cameraStartingPosition.rotation;
+            m_camera.LookAt = m_playerController.transform;
             Manager.m_counter.SetTimeLimit(m_darkTimer);
-            Manager.m_camController.SetCameraLookAtPLayer(m_cameraRotates);
-            Manager.m_camController.SetCameraMoveable(m_cameraMoves);
         }
     }
 

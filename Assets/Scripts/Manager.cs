@@ -8,7 +8,9 @@ public class Manager : MonoBehaviour
     public static HUD m_hud;
     public static Counter m_counter;
     public static LevelManager m_levelManager;
-    public static CameraController m_camController;
+
+    [SerializeField] private GameObject m_dimensionUIHolder = default;
+    [SerializeField] private Slider m_dimernsionUISlider = default;
 
     //Camera Data
     Camera m_camera;
@@ -39,7 +41,6 @@ public class Manager : MonoBehaviour
         m_levelManager = FindObjectOfType<LevelManager>();
         m_camera = Camera.main;
         m_camera.fieldOfView = m_maxFOV;
-        m_camController = FindObjectOfType<CameraController>();
         
     }
 
@@ -67,6 +68,12 @@ public class Manager : MonoBehaviour
             case SceneState.ssLEVEL_X:
             {
                 CalculateCameraFOV();
+
+                if (m_counter.IsCounting())
+                {
+                    m_dimernsionUISlider.value = 1 - m_counter.GetDistanceThrough();
+                }
+
                 if (m_counter.IsTimeOver() && m_counter.IsCounting())
                 {
                     DimensionSwitcher.SwitchDimension(false);
@@ -84,6 +91,8 @@ public class Manager : MonoBehaviour
 
     public void SwitchDimension(bool _isDark)
     {
+        m_dimensionUIHolder.SetActive(_isDark);
+
         if (_isDark)
         {
             m_counter.StartTimer();
